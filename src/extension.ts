@@ -1,4 +1,4 @@
-import { commands, ExtensionContext, window } from "vscode";
+import { commands, ExtensionContext, window, workspace } from "vscode";
 import GenerateComponentLib from "./GenerateComponentLib";
 
 export function activate(context: ExtensionContext) {
@@ -9,13 +9,15 @@ export function activate(context: ExtensionContext) {
   context.subscriptions.push(generateComponentsCommand);
 }
 
-const generateComponents = async () => {
-  const componentName = await window.showInputBox({
-    prompt: `Type the name of the new component`,
-  });
+const generateComponents = async (event: any) => {
+  if (workspace.workspaceFolders) {
+    const componentName = await window.showInputBox({
+      prompt: `Type the name of the new component`,
+    });
 
-  if (componentName) {
-    GenerateComponentLib.generate(componentName);
+    if (componentName) {
+      GenerateComponentLib.generate(componentName, event.path);
+    }
   }
 };
 
