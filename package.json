@@ -25,8 +25,18 @@
         },
         "generate-component-from-template.var-component-name": {
           "type": "string",
-          "default": "$componentName$",
+          "default": "{component_name}",
           "description": "Variable with component name."
+        },
+        "generate-component-from-template.extension-component": {
+          "type": "string",
+          "default": "js",
+          "description": "Variable with extension of component."        
+        },
+        "generate-component-from-template.generate-index-export": {
+          "type": "boolean",
+          "default": true,
+          "description": "If true, will generate index export."
         }
       }
     },
@@ -67,6 +77,7 @@
     "vscode-test": "^1.3.0"
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }
