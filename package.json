@@ -1,13 +1,37 @@
 {
   "name": "generate-component-from-template",
-  "displayName": "generate-component-from-template",
-  "description": "Generate component from the predefined template.",
+  "displayName": "Generate Component From Template",
+  "description": "A visual studio code extension for you to generate the any components from predefined templates.",
+  "homepage": "https://github.com/thiagocordeirooo/generate-component-from-template",
+  "author": "Thiago Cordeiro <thiagocordeirooo@gmail.com>",
+  "publisher": "thiagocordeirooo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thiagocordeirooo/generate-component-from-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thiagocordeirooo/generate-component-from-template/issues"
+  },
+  "icon": "assets/logo.png",
+  "galleryBanner": {
+    "color": "#22A1E2"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.47.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "vscode-extension",
+    "vscode",
+    "productivity",
+    "frontend",
+    "mobile",
+    "generate-component",
+    "templates"
   ],
   "activationEvents": [
     "onCommand:generate-component-from-template.generateComponents"
@@ -16,27 +40,27 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "generate-component-from-template configuration",
+      "title": "Generate Component From Template",
       "properties": {
         "generate-component-from-template.path-file-templates": {
           "type": "string",
           "default": ".components-templates",
-          "description": "Path to find your file templates."
+          "description": "Path where your template files are located. Tip: Place at the root of the project."
         },
-        "generate-component-from-template.var-component-name": {
+        "generate-component-from-template.component-name": {
           "type": "string",
           "default": "{component_name}",
-          "description": "Variable with component name."
+          "description": "Variable that will be used to name your competent and their respective files. Tip: Use between braces."
         },
-        "generate-component-from-template.extension-component": {
+        "generate-component-from-template.files-extension": {
           "type": "string",
           "default": "js",
-          "description": "Variable with extension of component."        
+          "description": "Extension of the generated files."
         },
         "generate-component-from-template.generate-index-export": {
           "type": "boolean",
           "default": true,
-          "description": "If true, will generate index export."
+          "description": "If true, it will generate an index file for standard component export."
         }
       }
     },
