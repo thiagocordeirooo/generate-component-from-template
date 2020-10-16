@@ -37,3 +37,26 @@ This extension contributes the following settings:
 - `generate-component-from-template.files-extension`: Extension of the generated files.
 
 - `generate-component-from-template.generate-index-export`: If true, it will generate an index file for standard component export.
+
+## Contributors
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/LorenaKauane">
+        <img src="https://avatars2.githubusercontent.com/u/26286922?s=460&u=863d459dfdfd58c53122c70c5d151531d0bb030b&v=4" style="border-radius:50%" width="100px;" alt=""/>
+        <br />
+        <sub><b>Lorena Kauane</b></sub>
+      </a>
+      <br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/thiagocordeirooo">
+        <img src="https://avatars2.githubusercontent.com/u/11415689?s=460&u=3a3323bb7d958f599fa838c27bf659cdb50488e9&v=4" style="border-radius:50%" width="100px;" alt=""/>
+        <br />
+        <sub><b>Thiago Cordeiro</b></sub>
+      </a>
+      <br />
+    </td>    
+  </tr>
+</table>
