@@ -11,25 +11,25 @@ import path = require("path");
 
 export default abstract class GenerateComponentLib {
   public static generate(componentName: string, currentPath: string) {
-    const pathFileTemplates = workspace
-      .getConfiguration(WORKSPACE_NAME)
-      .get(CONFIG_PATH_FILE__TEMPLATES);
+    const workspaceConfiguration = workspace.getConfiguration(WORKSPACE_NAME);
+    const pathFileTemplates = workspaceConfiguration.get(
+      CONFIG_PATH_FILE__TEMPLATES
+    );
 
-    const varComponentName = workspace
-      .getConfiguration(WORKSPACE_NAME)
-      .get(CONFIG_VAR_COMPONENT_NAME);
+    const varComponentName = workspaceConfiguration.get(
+      CONFIG_VAR_COMPONENT_NAME
+    );
 
-    const extensionComponent = workspace
-      .getConfiguration(WORKSPACE_NAME)
-      .get(CONFIG_EXTENSION_COMPONENT);
+    const extensionComponent = workspaceConfiguration.get(
+      CONFIG_EXTENSION_COMPONENT
+    );
 
-    const generateIndexExport = workspace
-      .getConfiguration(WORKSPACE_NAME)
-      .get(CONFIG_GENERATE_INDEX_EXPORT);
-
-    const fullPath = `${workspace.rootPath}/${pathFileTemplates}`;
+    const generateIndexExport = workspaceConfiguration.get(
+      CONFIG_GENERATE_INDEX_EXPORT
+    );
 
     try {
+      const fullPath = `${workspace.rootPath}/${pathFileTemplates}`;
       const files = fs.readdirSync(fullPath);
 
       const dirName = path.join(currentPath, componentName);
@@ -40,9 +40,8 @@ export default abstract class GenerateComponentLib {
       files.forEach((file: string) => {
         const fileContent = fs.readFileSync(path.join(fullPath, file), "utf-8");
 
-        const regex = new RegExp(`${varComponentName}`, "gi");
-
-        const fileData = fileContent.replace(regex, componentName);
+        const componentNameRegex = new RegExp(`${varComponentName}`, "gi");
+        const fileData = fileContent.replace(componentNameRegex, componentName);
 
         GenerateComponentLib.createFile(
           path.join(
@@ -61,7 +60,7 @@ export default abstract class GenerateComponentLib {
       }
     } catch (error) {
       window.showErrorMessage(
-        "No file was found. Check the path configured in the extension."
+        "No template files were found, please check if the folder '.components-templates' was created at the root of the project.\nOr check the extension settings."
       );
     }
   }
@@ -69,7 +68,9 @@ export default abstract class GenerateComponentLib {
   private static createFile(path: string, data: any) {
     fs.writeFile(path, data, async (err) => {
       if (err) {
-        return window.showErrorMessage("Falha na criação do arquivo HTML");
+        window.showErrorMessage(
+          `An error occurred while trying to create the file:\n${path}`
+        );
       }
     });
   }
