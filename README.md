@@ -10,7 +10,7 @@ A visual studio code extension for you to generate the any components from templ
 
 1. Create a folder named `.components-templates` in your application's root directory.
 
-2. Create your files with the extension `.tmpl` in the folder `.components-templates` with a tag `{component_name` to be replaced with the chosen name of your component, for example:
+2. Create your files with the extension `.tmpl` in the folder `.components-templates` with a tag `{component_name}` to be replaced with the chosen name of your component, for example:
 
 ```jsx
 import React from "react";
