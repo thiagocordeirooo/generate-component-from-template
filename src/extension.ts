@@ -17,7 +17,7 @@ const generateComponents = async (event: any) => {
     });
 
     if (componentName) {
-      GenerateComponentLib.generate(componentName, event.path);
+      GenerateComponentLib.generate(componentName, event.fsPath);
     }
   }
 };
